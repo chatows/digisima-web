@@ -10,11 +10,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $headers = "From: $correo";
 
     if (mail($to, $subject, $body, $headers)) {
-        echo "Gracias por tu mensaje. Te responderemos pronto.";
+        header("Location: index.html?estado=exito");
+        exit;
     } else {
-        echo "Lo sentimos, ocurrió un error. Intenta de nuevo.";
+        header("Location: index.html?estado=error");
+        exit;
     }
-} else {
-    echo "Acceso no autorizado.";
 }
 ?>

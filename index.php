@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Digisima - Consultoría en Activos Digitales</title>
+  <title>Digisima</title>
   <link rel="icon" href="favicon.png" type="image/png">
   <style>
     * {
@@ -21,23 +21,14 @@
     }
 
     header {
-      background: linear-gradient(90deg, #004f99, #ff6600);
-      color: white;
-      padding: 2rem 1rem;
+      background: none;
+      padding: 1rem;
       text-align: center;
-      animation: fadeIn 1.2s ease-in-out;
     }
 
     header img {
-      height: 60px;
-      vertical-align: middle;
-      margin-right: 1rem;
-    }
-
-    header h1 {
-      display: inline-block;
-      font-size: 2.2rem;
-      vertical-align: middle;
+      height: 200px;
+      max-width: 100%;
     }
 
     section {
@@ -131,11 +122,6 @@
       padding: 1.5rem;
     }
 
-    @keyframes fadeIn {
-      0% { opacity: 0; }
-      100% { opacity: 1; }
-    }
-
     @keyframes fadeInUp {
       0% {
         opacity: 0;
@@ -148,36 +134,23 @@
     }
 
     @media (max-width: 600px) {
-      header h1 {
-        display: block;
-        margin-top: 1rem;
-      }
-
       .servicios {
         flex-direction: column;
         align-items: center;
       }
     }
   </style>
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const form = document.querySelector("form");
-      form.addEventListener("submit", function(event) {
-        const email = document.getElementById("correo");
-        if (!email.value.includes("@")) {
-          alert("Por favor, ingresa un correo electrónico válido.");
-          email.focus();
-          event.preventDefault();
-        }
-      });
-    });
-  </script>
 </head>
 <body>
   <header>
     <img src="logoDigisima.png" alt="Logo Digisima">
-    <h1>Digisima</h1>
   </header>
+
+  <?php if (isset($_GET['estado']) && $_GET['estado'] === 'exito'): ?>
+    <h3 style="color: green;">Tu mensaje fue enviado correctamente. ¡Gracias por contactarnos!</h3>
+  <?php elseif (isset($_GET['estado']) && $_GET['estado'] === 'error'): ?>
+    <h3 style="color: red;">Ocurrió un error al enviar el mensaje. Intenta nuevamente.</h3>
+  <?php endif; ?>
 
   <section>
     <h2>¿Quiénes somos?</h2>
@@ -232,9 +205,22 @@
     </div>
   </section>
 
+  
+
   <section>
     <h2>Contáctanos</h2>
     <form action="contacto.php" method="post">
+      <label for="nombre">Nombre</label>
+      <input type="text" id="nombre" name="nombre" required>
+
+      <label for="correo">Correo electrónico</label>
+      <input type="email" id="correo" name="correo" required>
+
+      <label for="mensaje">Mensaje</label>
+      <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+
+      <button type="submit">Enviar mensaje</button>
+    </form>
   </section>
 
   <footer>
