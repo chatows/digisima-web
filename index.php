@@ -45,6 +45,12 @@
       text-align: center;
     }
 
+    section h4 {
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
     .servicios {
       display: flex;
       flex-wrap: wrap;
@@ -146,11 +152,13 @@
     <img src="logoDigisima.png" alt="Logo Digisima">
   </header>
 
+  <section>
   <?php if (isset($_GET['estado']) && $_GET['estado'] === 'exito'): ?>
     <h3 style="color: green;">Tu mensaje fue enviado correctamente. ¡Gracias por contactarnos!</h3>
   <?php elseif (isset($_GET['estado']) && $_GET['estado'] === 'error'): ?>
     <h3 style="color: red;">Ocurrió un error al enviar el mensaje. Intenta nuevamente.</h3>
   <?php endif; ?>
+  </section>
 
   <section>
     <h2>¿Quiénes somos?</h2>
@@ -204,8 +212,6 @@
       </div>
     </div>
   </section>
-
-  
 
   <section>
     <h2>Contáctanos</h2>

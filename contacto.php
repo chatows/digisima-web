@@ -10,10 +10,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $headers = "From: $correo";
 
     if (mail($to, $subject, $body, $headers)) {
-        header("Location: index.html?estado=exito");
+        header("Location: index.php?estado=exito");
         exit;
     } else {
-        header("Location: index.html?estado=error");
+        header("Location: index.php?estado=error");
         exit;
     }
 }
